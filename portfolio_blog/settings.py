@@ -70,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'portfolio_blog.wsgi.application'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
 # Database
