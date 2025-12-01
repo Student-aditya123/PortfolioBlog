@@ -1,40 +1,92 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="antialiased bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title%}My Portfolio{%endblock%}</title>
-    {% comment %} <link rel="stylesheet" href="{% static 'style.css' %}"> {% endcomment %}
-
-     <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}{{ site_title|default:"My Portfolio" }}{% endblock %}</title>
+   <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% comment %} <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"> {% endcomment %}
+  <meta name="description" content="{% block meta_description %}Personal portfolio and blog of {{ owner_name|default:"Aditya Singh" }}{% endblock %}">
 </head>
-<body class="bg-gray-50>
-     <!-- NAVBAR -->
-    <nav class="bg-white shadow p-4 flex justify-between">
-        <h1 class="text-2xl font-bold">My Portfolio</h1>
+<body class="min-h-screen flex flex-col">
+  <!-- NAV -->
+  <header class="w-full sticky top-0 z-50 bg-white/60 backdrop-blur dark:bg-slate-900/60 border-b border-slate-200 dark:border-slate-800">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-3">
+        <img src="{% static 'images/logo.png' %}" alt="logo" class="h-12 w-12 rounded-full bg-slate-100 dark:bg-slate-800 p-1">
+        <span class="font-semibold">{{ owner_name|default:"Aditya Singh" }}</span>
+      </a>
 
-        <ul class="flex gap-6">
-            <li><a href="/" class="hover:text-blue-600">Home</a></li>
-            <li><a href="/blog" class="hover:text-blue-600">Blog</a></li>
-            <li><a href="/about" class="hover:text-blue-600">About</a></li>
-            <li><a href="/portfolio" class="hover:text-blue-600">Portfolio</a></li>
-        </ul>
-    </nav>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="{% url 'home' %}" class="hover:underline">Home</a>
+        <a href="{% url 'about' %}" class="hover:underline">About</a>
+        <a href="{% url 'projects' %}" class="hover:underline">Projects</a>
+        <a href="{% url 'blog_list' %}" class="hover:underline">Blog</a>
+        <a href="{% url 'contact' %}" class="hover:underline">Contact</a>
+      </nav>
 
-    <!-- MAIN BODY -->
-    <main class="container mx-auto mt-10">
-        {% block content %}
-        {% endblock %}
-    </main>
+      <div class="flex items-center gap-9">
+        <a href="{{ github_url|default:'https://github.com/Student-aditya123' }}" class="hidden md:inline-block px-3 py-1 rounded-xl border">GitHub</a>
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" aria-label="Open menu">
+          <svg id="hamburger" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+          </svg>
+        </button>
+        <a href="{{ linkedin_url|default:'https://www.linkedin.com/in/aditya-singh-84b82a324/' }}" class="hidden md:inline-block px-3 py-1 rounded-xl border">LinkedIn</a>
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" aria-label="Open menu">
+          <svg id="hamburger" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+          </svg>
+        </button>
+      </div>
+     </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-white text-center p-4 mt-10">
-        <p>&copy; 2025 My Portfolio. All rights reserved.</p>
-    </footer>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <div class="px-4 py-4 flex flex-col gap-3">
+        <a href="{% url 'home' %}" class="py-2">Home</a>
+        <a href="{% url 'about' %}" class="py-2">About</a>
+        <a href="{% url 'projects' %}" class="py-2">Projects</a>
+        <a href="{% url 'blog_list' %}" class="py-2">Blog</a>
+        <a href="{% url 'contact' %}" class="py-2">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex-1 container mx-auto px-4 py-10">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-50 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700">
+    <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-semibold">{{ owner_name|default:"Aditya Singh" }}</p>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Making useful things. Open to collaboration.</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        {% if instagram_url %}<a href="https://www.instagram.com/aditya4407singh/" target="_blank" rel="noopener" class="text-sm">Instagram</a>{% endif %}
+        {% if linkedin_url %}<a href="https://www.linkedin.com/in/aditya-singh-84b82a324/" target="_blank" rel="noopener" class="text-sm">LinkedIn</a>{% endif %}
+        {% if github_url %}<a href="https://github.com/Student-aditya123" target="_blank" rel="noopener" class="text-sm">GitHub</a>{% endif %}
+      </div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS for mobile menu -->
+  <script>
+    (function(){
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    })();
+  </script>
 </body>
 </html>

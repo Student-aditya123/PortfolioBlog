@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Project
 from .forms import ContactForm
-# Create your views here.
 
 def home(request):
     return render(request, 'portfolio/home.html')

@@ -1,4 +1,47 @@
 {% extends "layout.html" %}
+{% block title %}Contact — {{ owner_name|default:"Aditya Singh" }}{% endblock %}
+{% block content %}
+<div class="max-w-2xl mx-auto grid gap-6">
+  <div>
+    <h1 class="text-2xl font-semibold">Contact Me</h1>
+    <p class="text-sm text-slate-500">Have a project or just want to say hi? Send a message — I'll reply as soon as I can.</p>
+  </div>
+
+  {% if messages %}
+    <div>
+      {% for message in messages %}
+        <div class="p-3 rounded-lg {% if message.tags == 'success' %}bg-green-50 text-green-800{% else %}bg-red-50 text-red-800{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="post" action="{% url 'contact' %}" class="grid gap-4">
+    {% csrf_token %}
+    <div>
+      <label class="text-sm">Name</label>
+      <input type="text" name="name" value="{{ form.name.value|default_if_none:'' }}" required class="mt-1 w-full px-3 py-2 rounded-lg border bg-white dark:bg-slate-800">
+    </div>
+
+    <div>
+      <label class="text-sm">Email</label>
+      <input type="email" name="email" value="{{ form.email.value|default_if_none:'' }}" required class="mt-1 w-full px-3 py-2 rounded-lg border bg-white dark:bg-slate-800">
+    </div>
+
+    <div>
+      <label class="text-sm">Message</label>
+      <textarea name="message" rows="6" required class="mt-1 w-full px-3 py-2 rounded-lg border bg-white dark:bg-slate-800"></textarea>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button type="submit" class="px-5 py-2 rounded-xl bg-slate-800 text-white">Send Message</button>
+      <p class="text-sm text-slate-500">Or email me at <a href="mailto:{{ contact_email }}" class="underline">{{ contact_email }}</a></p>
+    </div>
+  </form>
+</div>
+{% endblock %}
+{% comment %} {% extends "layout.html" %}
 {% block content %}
 <h1>Contact Me</h1>
 <form method="post">
@@ -6,5 +49,5 @@
      {{form.as_p}}
      <button type="submit">Send</button>
 </form>
-{% endblock  %}
+{% endblock  %} {% endcomment %}
      
