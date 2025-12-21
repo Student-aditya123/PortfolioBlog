@@ -1,77 +1,130 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 {% load static %}
-{% block title %}Home — {{ owner_name|default:"Aditya Singh" }}{% endblock %}
+
 {% block content %}
-<section class="grid gap-10">
-  <!-- HERO -->
-  <div class="grid md:grid-cols-2 gap-8 items-center">
-    <div>
-      <p class="text-sm text-slate-500 dark:text-slate-400">Hello, I'm</p>
-      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">{{ owner_name|default:"Aditya Singh" }}</h1>
-      <p class="mt-3 text-lg text-slate-700 dark:text-slate-300">{{ tagline|default:"Software Engineer • Problem Solver • Creator" }}</p>
-      <div class="mt-6 flex gap-4">
-        <a href="{% url 'projects' %}" class="inline-block px-5 py-3 rounded-xl bg-slate-800 text-white">View Projects</a>
-        <a href="{% url 'contact' %}" class="inline-block px-5 py-3 rounded-xl border">Contact Me</a>
-      </div>
-
-      <div class="mt-8">
-        <h3 class="text-sm text-slate-500">Skills</h3>
-        <div class="mt-3 flex flex-wrap gap-2">
-          {% for skill in skills %}
-            <span class="px-3 py-1 rounded-full border text-sm">{{ skill }}</span>
-          {% empty %}
-            <span class="px-3 py-1 rounded-full border text-sm">Django</span>
-            <span class="px-3 py-1 rounded-full border text-sm">Tailwind</span>
-            <span class="px-3 py-1 rounded-full border text-sm">Python</span>
-          {% endfor %}
+<!-- Hero Section -->
+<section id="hero">
+    <div class="hero-content">
+        <h1 class="hero-title reveal">
+            HELLO, I'M <span class="glowing-3d-wobble" data-text="{{ profile.name|upper }}">{{ profile.name|default:"Aditya Singh"|upper }}</span><br>
+            <span style="font-size: 0.6em; color: var(--text-muted);">I AM A </span>
+            <span class="neon-text-pink" id="typing-text" data-words='["FULL STACK PYTHON AI DEVELOPER", "UI/UX DESIGNER", "PYTHON EXPERT", "TECH ENTHUSIAST"]'></span>
+            <span class="typing-cursor"></span>
+        </h1>
+        <p class="reveal" style="margin-top: 20px; font-size: 1.2rem; color: var(--text-muted);">
+            Building immersive digital experiences at the intersection of design and code.
+        </p>
+        <div class="hero-actions reveal" style="transition-delay: 0.2s;">
+            <a href="#projects" class="btn btn-primary">View Artifacts</a>
+            <a href="#contact" class="btn btn-secondary" style="margin-left: 20px;">Init Contact</a>
         </div>
-      </div>
-    </div> 
-
-    <div class="flex items-center justify-center">
-      <img src="{% static "images/profile_photo.jpg" %}" alt="profile" class="w-64 h-64 rounded-2xl object-cover shadow-lg">
     </div>
-  </div>
-
-  <!-- Featured Projects -->
-  <div>
-    <h2 class="text-2xl font-semibold">Featured Projects</h2>
-    <div class="mt-4 grid md:grid-cols-3 gap-6">
-      {% for project in featured_projects %}
-      <article class="rounded-2xl p-5 bg-white dark:bg-slate-800 shadow">
-        <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" class="h-40 w-full object-cover rounded-lg">
-        <h3 class="mt-3 font-semibold">{{ project.title }}</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">{{ project.short_description }}</p>
-        <div class="mt-3 flex gap-2">
-          {% if project.github_url %}<a href="{{ project.github_url }}" class="text-sm border px-2 py-1 rounded">Code</a>{% endif %}
-          {% if project.project_url %}<a href="{{ project.project_url }}" class="text-sm border px-2 py-1 rounded">Live</a>{% endif %}
-        </div>
-      </article>
-      {% empty %}
-      <!-- Example placeholder cards -->
-      <article class="rounded-2xl p-5 bg-white dark:bg-slate-800 shadow">
-        <div class="h-40 rounded-lg bg-slate-100 dark:bg-slate-700"></div>
-        <h3 class="mt-3 font-semibold">Project Title</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Short description of the project.</p>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-
-  <!-- Latest blog posts -->
-  <div>
-    <h2 class="text-2xl font-semibold">Latest from the Blog</h2>
-    <div class="mt-4 grid md:grid-cols-3 gap-6">
-      {% for post in latest_posts %}
-      <article class="rounded-xl p-4 bg-white dark:bg-slate-800 shadow-sm">
-        <h3 class="font-semibold"><a href="{% url 'blog_detail' post.slug %}" class="hover:underline">{{ post.title }}</a></h3>
-        <p class="text-xs text-slate-500 mt-2">{{ post.published_date|date:"F j, Y" }} • {{ post.read_time|default:"3 min read" }}</p>
-        <p class="mt-3 text-sm text-slate-600 dark:text-slate-400">{{ post.excerpt }}</p>
-      </article>
-      {% empty %}
-      <p class="text-sm text-slate-500">No posts yet — write your first blog post!</p>
-      {% endfor %}
-    </div>
-  </div>
 </section>
-{% endblock %} 
+
+<!-- About Section -->
+<section id="about">
+    <div class="section-header reveal">
+        <h2 class="section-title">SYSTEM STATUS</h2>
+        <p style="color: var(--text-muted)">// Core competencies loaded</p>
+    </div>
+    
+    <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+        <div class="glass-panel tilt-card reveal" style="padding: 40px;">
+            <h3 class="neon-text-cyan">BIO_DATA</h3>
+            <p style="margin-top: 20px; color: #ddd;">
+                {{ profile.bio|default:"Specialized in high-performance web applications using Django and React. Obsessed with clean code and pixel-perfect neon interfaces." }}
+            </p>
+        </div>
+
+        <div class="glass-panel tilt-card reveal" style="padding: 40px;">
+            <h3 class="neon-text-pink">SKILL_SET</h3>
+            <div style="margin-top: 20px;">
+                {% for skill in skills %}
+                <div style="margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>{{ skill.name }}</span>
+                        <span class="neon-text-cyan">{{ skill.level }}%</span>
+                    </div>
+                    <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+                        <div style="height: 100%; width: {{ skill.level }}%; background: var(--primary-neon); border-radius: 3px; box-shadow: 0 0 10px var(--primary-neon);"></div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No skills configured.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <div class="section-header reveal">
+        <h2 class="section-title">DEPLOYED UNITS</h2>
+        <p style="color: var(--text-muted)">// Visual verification of recent builds</p>
+    </div>
+
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="glass-panel project-card tilt-card reveal">
+            <div class="card-image-wrapper">
+                {% if project.thumbnail %}
+                    <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" class="card-image">
+                {% else %}
+                    <!-- Placeholder Gradient -->
+                    <div class="card-image" style="background: linear-gradient(45deg, #111, var(--accent-neon)); height: 100%; width: 100%;"></div>
+                {% endif %}
+            </div>
+            <div class="card-content">
+                <h3 style="margin-bottom: 10px;">{{ project.title }}</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">{{ project.description|truncatechars:100 }}</p>
+                
+                <div class="tags">
+                    {% for skill in project.skills_used.all %}
+                        <span style="font-size: 0.75rem; border: 1px solid var(--primary-neon); color: var(--primary-neon); padding: 2px 8px; border-radius: 10px; margin-right: 5px;">{{ skill.name }}</span>
+                    {% endfor %}
+                </div>
+
+                <div style="margin-top: 20px; display: flex; gap: 15px;">
+                    {% if project.project_url %}
+                        <a href="{{ project.project_url }}" class="btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">LIVE</a>
+                    {% endif %}
+                    {% if project.github_url %}
+                        <a href="{{ project.github_url }}" class="btn-secondary" style="padding: 8px 20px; font-size: 0.8rem;">CODE</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No projects found.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="section-header reveal">
+        <h2 class="section-title">ESTABLISH UPLINK</h2>
+        <p style="color: var(--text-muted)">// Send encrypted transmission</p>
+    </div>
+
+    <div class="glass-panel tilt-card reveal" style="max-width: 600px; margin: 0 auto; padding: 40px;">
+        <form method="POST" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">IDENTITY</label>
+                <input type="text" name="name" class="form-input" required>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">FREQUENCY (EMAIL)</label>
+                <input type="email" name="email" class="form-input" required>
+            </div>
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">DATA PACKET</label>
+                <textarea name="message" rows="4" class="form-input" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">TRANSMIT</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
