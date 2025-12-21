@@ -1,92 +1,210 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" class="antialiased bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{% block title %}{{ site_title|default:"My Portfolio" }}{% endblock %}</title>
-   <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio | Aditya Singh{% endblock %}</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
-  {% comment %} <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"> {% endcomment %}
-  <meta name="description" content="{% block meta_description %}Personal portfolio and blog of {{ owner_name|default:"Aditya Singh" }}{% endblock %}">
+    <script>src="https://cdn.tailwindcss.com"</script>
 </head>
-<body class="min-h-screen flex flex-col">
-  <!-- NAV -->
-  <header class="w-full sticky top-0 z-50 bg-white/60 backdrop-blur dark:bg-slate-900/60 border-b border-slate-200 dark:border-slate-800">
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="{% url 'home' %}" class="flex items-center gap-3">
-        <img src="{% static 'images/logo.png' %}" alt="logo" class="h-12 w-12 rounded-full bg-slate-100 dark:bg-slate-800 p-1">
-        <span class="font-semibold">{{ owner_name|default:"Aditya Singh" }}</span>
-      </a>
+<body>
+    
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="{% url 'home' %}" class="hover:underline">Home</a>
-        <a href="{% url 'about' %}" class="hover:underline">About</a>
-        <a href="{% url 'projects' %}" class="hover:underline">Projects</a>
-        <a href="{% url 'blog_list' %}" class="hover:underline">Blog</a>
-        <a href="{% url 'contact' %}" class="hover:underline">Contact</a>
-      </nav>
+    <!-- Background -->
+    <canvas id="bg-canvas"></canvas>
 
-      <div class="flex items-center gap-9">
-        <a href="{{ github_url|default:'https://github.com/Student-aditya123' }}" class="hidden md:inline-block px-3 py-1 rounded-xl border">GitHub</a>
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" aria-label="Open menu">
-          <svg id="hamburger" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
-          </svg>
-        </button>
-        <a href="{{ linkedin_url|default:'https://www.linkedin.com/in/aditya-singh-84b82a324/' }}" class="hidden md:inline-block px-3 py-1 rounded-xl border">LinkedIn</a>
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md" aria-label="Open menu">
-          <svg id="hamburger" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
-          </svg>
-        </button>
-      </div>
-     </div>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">Aditya<span class="neon-text-pink">Singh</span></div>
+        <div class="nav-links">
+            <a href="#hero" class="magnetic-link">Home</a>
+            <a href="#about" class="magnetic-link">About</a>
+            <a href="#projects" class="magnetic-link">Work</a>
+            <a href="#contact" class="magnetic-link">Contact</a>
+        </div>
+    </nav>
 
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-      <div class="px-4 py-4 flex flex-col gap-3">
-        <a href="{% url 'home' %}" class="py-2">Home</a>
-        <a href="{% url 'about' %}" class="py-2">About</a>
-        <a href="{% url 'projects' %}" class="py-2">Projects</a>
-        <a href="{% url 'blog_list' %}" class="py-2">Blog</a>
-        <a href="{% url 'contact' %}" class="py-2">Contact</a>
-      </div>
-    </div>
-  </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 
-  <!-- MAIN -->
-  <main class="flex-1 container mx-auto px-4 py-10">
-    {% block content %}{% endblock %}
-  </main>
+    <footer>
+        <div class="social-icons" style="display: flex; justify-content: center; gap: 20px; padding: 40px 0;">
+            <a href="#" class="btn-secondary" style="border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">GH</a>
+            <a href="#" class="btn-secondary" style="border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">LI</a>
+        </div>
+        <p style="text-align: center; color: var(--text-muted); padding-bottom: 20px;">SYSTEM OFFLINE. &copy; {% now "Y" %}</p>
+    </footer>
 
-  <!-- FOOTER -->
-  <footer class="bg-slate-50 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700">
-    <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div>
-        <p class="font-semibold">{{ owner_name|default:"Aditya Singh" }}</p>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Making useful things. Open to collaboration.</p>
-      </div>
+    <script>
+        // --- 1. ADVANCED CUSTOM CURSOR ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-      <div class="flex items-center gap-3">
-        {% if instagram_url %}<a href="https://www.instagram.com/aditya4407singh/" target="_blank" rel="noopener" class="text-sm">Instagram</a>{% endif %}
-        {% if linkedin_url %}<a href="https://www.linkedin.com/in/aditya-singh-84b82a324/" target="_blank" rel="noopener" class="text-sm">LinkedIn</a>{% endif %}
-        {% if github_url %}<a href="https://github.com/Student-aditya123" target="_blank" rel="noopener" class="text-sm">GitHub</a>{% endif %}
-      </div>
-    </div>
-  </footer>
+            // Dot follows immediately
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
 
-  <!-- Minimal JS for mobile menu -->
-  <script>
-    (function(){
-      const btn = document.getElementById('mobile-menu-button');
-      const menu = document.getElementById('mobile-menu');
-      btn?.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-      });
-    })();
-  </script>
+            // Outline follows with slight delay (animation in CSS helps, but we keyframe here for smoothness)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hover States
+        document.querySelectorAll('a, button, .project-card, input, textarea').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+
+        // --- 2. 3D TILT EFFECT FOR CARDS ---
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; // Max rotation deg
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+
+
+        // --- 3. TYPEWRITER EFFECT ---
+        const typeElement = document.getElementById('typing-text');
+        if (typeElement) {
+            const words = JSON.parse(typeElement.getAttribute('data-words'));
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                
+                if (isDeleting) {
+                    typeElement.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typeElement.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let typeSpeed = isDeleting ? 50 : 100;
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    typeSpeed = 2000; // Pause at end
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    typeSpeed = 500;
+                }
+
+                setTimeout(type, typeSpeed);
+            }
+            document.addEventListener('DOMContentLoaded', type);
+        }
+
+
+        // --- 4. SCROLL ANIMATIONS ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // Navbar scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+
+        // --- 5. PARTICLE BACKGROUND ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, particles = [];
+
+        function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2;
+                this.color = Math.random() > 0.5 ? 'rgba(0, 243, 255,' : 'rgba(255, 0, 255,';
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if(this.x < 0 || this.x > w) this.vx *= -1;
+                if(this.y < 0 || this.y > h) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + '0.5)';
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for(let i=0; i<80; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, w, h);
+            particles.forEach((p, i) => {
+                p.update();
+                p.draw();
+                // Connect
+                for(let j=i+1; j<particles.length; j++) {
+                    const dx = p.x - particles[j].x;
+                    const dy = p.y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255,255,255,${0.1 - dist/1000})`;
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => { resize(); init(); });
+        resize(); init(); animate();
+
+    </script>
 </body>
 </html>
