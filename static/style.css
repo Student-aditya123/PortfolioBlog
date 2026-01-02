@@ -317,7 +317,7 @@ section { padding: 120px 10%; position: relative; }
     font-size: 3rem;
     margin-bottom: 10px;
     background: linear-gradient(90deg, #fff, #aaa);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
