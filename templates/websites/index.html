@@ -11,6 +11,7 @@
     position: relative;
     margin: 100px auto;
     overflow: hidden;
+    margin-bottom: 200px;
 }
 
 /* Image */
@@ -49,77 +50,452 @@
 .profile-wrapper {
     box-shadow: 0 0 0 2px rgba(139,92,246,0.8);
 }
+.profile-wrapper {
+    margin: 0 auto 40px;
+}
 
+
+#hero {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-title {
+    margin: 100;
+    line-height: 1.1;
+}
+
+ #about {
+    margin-top: 120px;
+}
+
+#about {
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #000;
+}
+
+.about-card {
+  max-width: 900px;
+  width: 100%;
+  background: linear-gradient(145deg, #111, #0b0b0b);
+  border-radius: 18px;
+  padding: 40px;
+  color: #fff;
+   box-shadow:
+    0 0 0 1.5px rgba(59,130,246,0.6),        /* blue border */
+    0 0 25px rgba(37,99,235,0.35),           /* outer glow */
+    0 25px 60px rgba(0,0,0,0.9);
+  transform: perspective(1200px) rotateY(-6deg);
+  transition: transform 0.6s ease;
+}
+
+.about-card:hover {
+  transform: perspective(1200px) rotateY(0deg);
+}
+
+.about-card h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+   color: #60a5fa;
+}
+
+.about-text {
+  color: #bbb;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.about-card h3 {
+  margin-bottom: 20px;
+   color: #60a5fa;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.about-box {
+  background: linear-gradient(145deg, #151515, #0d0d0d);
+  border-radius: 14px;
+  padding: 22px;
+  background: linear-gradient(
+    145deg,
+    #0a1224,
+    #050b1a
+  );
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    inset 0 0 0 1px rgba(59,130,246,0.6),
+    0 0 20px rgba(37,99,235,0.4),
+    0 20px 40px rgba(0,0,0,1);
+}
+
+.about-box span {
+  font-size: 26px;
+  color: #ffd36a;
+}
+
+.about-box h4 {
+  margin: 10px 0 6px;
+  color: #fff;
+}
+
+.about-box p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+#portfolio {
+  padding: 120px 80px;
+  background: #000;
+}
+
+.portfolio-main-box {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #0b0f18, #05070d);
+  box-shadow:
+    0 0 0 1.5px rgba(59,130,246,0.35),   /* blue border */
+    0 30px 80px rgba(0,0,0,0.95);
+  opacity: 1;  
+  transform: perspective(1200px) rotateY(-6deg) translateY(40px);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.portfolio-main-box:hover {
+  transform: perspective(1200px) rotateY(0deg);
+  box-shadow:
+    0 0 0 1.5px rgba(59,130,246,0.6),
+    0 0 35px rgba(37,99,235,0.35),
+    0 40px 100px rgba(0,0,0,1);
+}
+.portfolio-main-box .portfolio-card {
+  transform: translateZ(0);
+}
+.portfolio-main-box.show {
+  opacity: 1;
+  transform: perspective(1200px) rotateY(-6deg) translateY(0);
+  transition: all 0.8s ease;
+}
+
+
+@media (max-width: 768px) {
+  .portfolio-main-box {
+    padding: 24px;
+  }
+}
+
+ 
+.portfolio-header h2 {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.portfolio-pages-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(145deg, #0b0f18, #05070d);
+  border-radius: 18px;
+  padding: 14px 20px;
+  max-width: 700px;
+  box-shadow:
+    0 0 0 1px rgba(59,130,246,0.25),
+    0 20px 40px rgba(0,0,0,0.9);
+}
+
+.portfolio-pages-bar .pages {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.portfolio-pages-bar .page {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: color 0.3s ease;
+}
+.portfolio-pages-bar .page.active {
+  color: #e5e7eb;
+}
+.portfolio-pages-bar .active-indicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #3b82f6;
+  box-shadow:
+    0 0 12px rgba(59,130,246,0.9),
+    0 0 25px rgba(37,99,235,0.6);
+}
+
+{% comment %} .portfolio-tabs {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.portfolio-tabs li {
+  font-size: 14px;
+  color: #9ca3af;
+  cursor: pointer;
+  position: relative;
+}
+
+.portfolio-tabs li.active {
+  color: #60a5fa;
+}
+
+.portfolio-tabs li.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #3b82f6;
+  border-radius: 2px;
+} {% endcomment %}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.portfolio-card {
+  background: linear-gradient(145deg, #0b1220, #050914);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 12px; /* THIS creates boxed feel */
+  box-shadow:
+    0 0 0 1px rgba(59,130,246,0.35), /* visible border */
+    0 18px 45px rgba(0,0,0,0.95);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow:
+    0 0 0 1px rgba(59,130,246,0.6),
+    0 0 30px rgba(37,99,235,0.35),
+    0 30px 70px rgba(0,0,0,1);
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+}
+
+.portfolio-info {
+  padding: 18px;
+}
+
+.portfolio-info h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.portfolio-info span {
+  font-size: 13px;
+  color: #60a5fa;
+}
+
+.map-box {
+  position: relative;
+  margin-bottom: 40px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.map-box iframe {
+  width: 100%;
+  height: 350px;
+  filter: grayscale(1) invert(1) contrast(1.2);
+}
+
+.map-card {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #161616;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 0 20px rgba(255,170,0,.15);
+}
 </style>
 
-<div class="profile-wrapper">
-    <img src="{% static 'images/profile.jpg' %}" alt="Profile">
-</div>
 <section id="hero">  
+    <div class="profile-wrapper">
+         <img src="{% static 'images/profile.jpg' %}" alt="Profile">
+    </div>
     <div class="hero-content">
+        <h1><span style="font-size: 2.5rem; margin= -10px">HELLO 👋</span></h1>
         <h1 class="hero-title reveal">
-            HELLO, I'M <span class="glowing-3d-wobble" data-text="{{ profile.name|upper }}">{{ profile.name|default:"Aditya Singh"|upper }}</span><br>
+            I'M <span class="glowing-3d-wobble" data-text="{{ profile.name|upper }}">{{ profile.name|default:"Aditya Singh"|upper }}</span><br>
             <span style="font-size: 0.6em; color: var(--text-muted);">I AM A </span>
-            <span class="neon-text-pink" id="typing-text" data-words='["FULL STACK PYTHON AI DEVELOPER", "UI/UX DESIGNER", "PYTHON EXPERT", "TECH ENTHUSIAST"]'></span>
+            <span class="neon-text-pink" id="typing-text" data-words='["FULL STACK PYTHON","AI DEVELOPER", "UI/UX DESIGNER"]'></span>
             <span class="typing-cursor"></span>
         </h1>
         <p class="reveal" style="margin-top: 20px; font-size: 1.2rem; color: var(--text-muted);">
-            Building immersive digital experiences at the intersection of design and code.
-
-From ideas to interfaces — I design and develop meaningful digital products.
-
-View Artifacts
-A curated collection of my work — projects, prototypes, and experiments.
-
-Init Contact
-Looking for internships, open-source collaboration, or exciting projects. Let’s connect.
-
+            A passionate Full Stack Python AI Developer 🚀
+            <br>having experience in building web applications with Django/Javascript/React.js
+            <br> and AI solutions with Machine Learning.
         </p>
         <div class="hero-actions reveal" style="transition-delay: 0.2s;">
-            <a href="#projects" class="btn btn-primary">View Artifacts</a>
-            <a href="#contact" class="btn btn-secondary" style="margin-left: 20px;">Init Contact</a>
+            <a href="#projects" class="btn btn-primary">See My Resume</a>
+            <a href="#contact" class="btn btn-secondary" style="margin-left: 20px;">Contact Me</a>
         </div>
     </div>
 </section>
 
+ 
 <!-- About Section -->
-<section id="about">
-    <div class="section-header reveal">
-        <h2 class="section-title">SYSTEM STATUS</h2>
-        <p style="color: var(--text-muted)">// Core competencies loaded</p>
-    </div>
-    
-    <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-        <div class="glass-panel tilt-card reveal" style="padding: 40px;">
-            <h3 class="neon-text-cyan">BIO_DATA</h3>
-            <p style="margin-top: 20px; color: #ddd;">
-                {{ profile.bio|default:"Specialized in high-performance web applications using Django and React. Obsessed with clean code and pixel-perfect neon interfaces." }}
-            </p>
-        </div>
+ <section id="about">
+  <div class="about-card">
+    <h2>About Me</h2>
+    <p style="color: var(--text-muted)">
+            I am a Computer Science Engineering student with a strong interest in
+        <span>Web Development</span> and <span>Problem Solving</span>.
+        I enjoy building scalable web applications using modern technologies
+        and continuously improving my skills through real-world projects.
+        </p>
+        <p class="about-text">
+        Currently, I focus on <span>Django</span>, <span>MERN Stack</span>,
+        and open-source contributions while preparing for product-based roles.
+    </p>
 
-        <div class="glass-panel tilt-card reveal" style="padding: 40px;">
-            <h3 class="neon-text-pink">SKILL_SET</h3>
-            <div style="margin-top: 20px;">
-                {% for skill in skills %}
-                <div style="margin-bottom: 15px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span>{{ skill.name }}</span>
-                        <span class="neon-text-cyan">{{ skill.level }}%</span>
-                    </div>
-                    <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
-                        <div style="height: 100%; width: {{ skill.level }}%; background: var(--primary-neon); border-radius: 3px; box-shadow: 0 0 10px var(--primary-neon);"></div>
-                    </div>
-                </div>
-                {% empty %}
-                <p>No skills configured.</p>
-                {% endfor %}
-            </div>
-        </div>
+    <h3>What I'm Doing</h3>
+
+    <div class="about-grid">
+      <div class="about-box">
+        <span>🎨</span>
+        <h4>Web Design</h4>
+        <p>Modern and high-quality design made at a professional level.</p>
+      </div>
+
+      <div class="about-box">
+        <span>💻</span>
+        <h4>Web Development</h4>
+        <p>High-quality development of sites at the professional level.</p>
+      </div>
+
+      <div class="about-box">
+        <span>📱</span>
+        <h4>Mobile Apps</h4>
+        <p>Professional development of applications for iOS and Android.</p>
+      </div>
+
+      <div class="about-box">
+        <span>📸</span>
+        <h4>Photography</h4>
+        <p>I make high-quality photos of any category at a professional level.</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio">
+ <div class="portfolio-main-box">
+   <div class="portfolio-header">
+     <h2>Portfolio</h2>
+  <div class="portfolio-pages-bar">
+
+  <ul class="pages">
+    <li>
+      <button class="page active" data-filter="all">All</button>
+    </li>
+    <li>
+      <button class="page" data-filter="web design">Web Design</button>
+    </li>
+    <li>
+      <button class="page" data-filter="applications">Applications</button>
+    </li>
+    <li>
+      <button class="page" data-filter="web development">Web Development</button>
+    </li>
+  </ul>
+
+  <span class="active-indicator"></span>
+
+</div>
+
+    {% comment %} <ul class="portfolio-tabs">
+      <li class="active">All</li>
+      <li>AI</li>
+      <li>Web Design</li>
+      <li>Applications</li>
+      <li>Web Development</li>
+    </ul>
+  </div> {% endcomment %}
+
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <img src="{% static 'images/Fund.png' %}" alt="">
+      <div class="portfolio-info">
+        <h4>Finance Dashboard</h4>
+        <span>Web Development</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <img src="{% static 'images/Orion.png' %}" alt="">
+      <div class="portfolio-info">
+        <h4>Orion Analytics</h4>
+        <span>Web Development</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <img src="{% static 'images/Fundo.png' %}" alt="">
+      <div class="portfolio-info">
+        <h4>Fundo</h4>
+        <span>Web Design</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <img src="{% static 'images/Brownlio.png' %}" alt="">
+      <div class="portfolio-info">
+        <h4>Brownlio App</h4>
+        <span>Applications</span>
+      </div>
+    </div>
+  </div>
+ </div>
 </section>
 
 <!-- Projects Section -->
-<section id="projects">
+{% comment %} <section id="projects">
     <div class="section-header reveal">
         <h2 class="section-title">DEPLOYED UNITS</h2>
         <p style="color: var(--text-muted)">// Visual verification of recent builds</p>
@@ -160,31 +536,42 @@ Looking for internships, open-source collaboration, or exciting projects. Let’
         <p>No projects found.</p>
         {% endfor %}
     </div>
-</section>
+</section> {% endcomment %}
 
 <!-- Contact Section -->
 <section id="contact">
     <div class="section-header reveal">
-        <h2 class="section-title">ESTABLISH UPLINK</h2>
-        <p style="color: var(--text-muted)">// Send encrypted transmission</p>
+        <h2 class="section-title">Contact</h2>
+        <div class="map-box">
+    <iframe 
+      src="https://maps.google.com/maps?q=Lucknow&t=&z=13&ie=UTF8&iwloc=&output=embed">
+    </iframe>
+
+    {% comment %} <div class="map-card">
+      <h4>Lucknow, India</h4>
+      <p>📍 Uttar Pradesh</p>
+      <p>✉️ aditya@email.com</p>
+    </div> {% endcomment %}
+  </div>
+        {% comment %} <p style="color: var(--text-muted)">// Send encrypted transmission</p> {% endcomment %}
     </div>
 
     <div class="glass-panel tilt-card reveal" style="max-width: 600px; margin: 0 auto; padding: 40px;">
         <form method="POST" action="{% url 'home' %}">
             {% csrf_token %}
             <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">IDENTITY</label>
+                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">FULL NAME</label>
                 <input type="text" name="name" class="form-input" required>
             </div>
             <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">FREQUENCY (EMAIL)</label>
+                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">EMAIL</label>
                 <input type="email" name="email" class="form-input" required>
             </div>
             <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">DATA PACKET</label>
+                <label style="display: block; margin-bottom: 8px; color: var(--primary-neon); font-size: 0.8rem;">SEND MESSAGE</label>
                 <textarea name="message" rows="4" class="form-input" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">TRANSMIT</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">SUBMIT</button>
         </form>
     </div>
 </section>

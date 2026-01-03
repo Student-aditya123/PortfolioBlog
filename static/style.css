@@ -230,7 +230,7 @@ nav.scrolled {
 .nav-links a:hover::after { width: 100%; }
 
 /* --- HERO --- */
-#hero {
+/* #hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -244,7 +244,7 @@ nav.scrolled {
     font-size: 4rem;
     margin-bottom: 20px;
     line-height: 1.1;
-}
+} */
 
 .typing-cursor {
     display: inline-block;
