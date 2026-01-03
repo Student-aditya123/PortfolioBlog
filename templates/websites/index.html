@@ -11,6 +11,7 @@
     position: relative;
     margin: 100px auto;
     overflow: hidden;
+    margin-bottom: 200px;
 }
 
 /* Image */
@@ -49,44 +50,219 @@
 .profile-wrapper {
     box-shadow: 0 0 0 2px rgba(139,92,246,0.8);
 }
+.profile-wrapper {
+    margin: 0 auto 40px;
+}
+
+
+#hero {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-title {
+    margin: 100;
+    line-height: 1.1;
+}
+
+{% comment %} #about-wrapper {
+    margin: 800px;
+} {% endcomment %}
+ #about {
+    margin-top: 120px;
+}
+
+#about {
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #000;
+}
+
+.about-card {
+  max-width: 900px;
+  width: 100%;
+  background: linear-gradient(145deg, #111, #0b0b0b);
+  border-radius: 18px;
+  padding: 40px;
+  color: #fff;
+   box-shadow:
+    0 0 0 1.5px rgba(59,130,246,0.6),        /* blue border */
+    0 0 25px rgba(37,99,235,0.35),           /* outer glow */
+    0 25px 60px rgba(0,0,0,0.9);
+  {% comment %} box-shadow:
+    0 0 0 1px rgba(255, 200, 80, 0.15),
+    0 25px 60px rgba(0, 0, 0, 0.9); {% endcomment %}
+  transform: perspective(1200px) rotateY(-6deg);
+  transition: transform 0.6s ease;
+}
+
+.about-card:hover {
+  transform: perspective(1200px) rotateY(0deg);
+}
+
+.about-card h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+   color: #60a5fa;
+  {% comment %} color: #ffd36a; {% endcomment %}
+}
+
+.about-text {
+  color: #bbb;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.about-card h3 {
+  margin-bottom: 20px;
+   color: #60a5fa;
+  {% comment %} color: #fff; {% endcomment %}
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.about-box {
+  background: linear-gradient(145deg, #151515, #0d0d0d);
+  border-radius: 14px;
+  padding: 22px;
+  background: linear-gradient(
+    145deg,
+    #0a1224,
+    #050b1a
+  );
+  {% comment %} box-shadow:
+    inset 0 0 0 1px rgba(255, 200, 80, 0.12),
+    0 12px 30px rgba(0, 0, 0, 0.8); {% endcomment %}
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    inset 0 0 0 1px rgba(59,130,246,0.6),
+    0 0 20px rgba(37,99,235,0.4),
+    0 20px 40px rgba(0,0,0,1);
+  {% comment %} box-shadow:
+    inset 0 0 0 1px rgba(255, 200, 80, 0.3),
+    0 20px 40px rgba(0, 0, 0, 1); {% endcomment %}
+}
+
+.about-box span {
+  font-size: 26px;
+  color: #ffd36a;
+}
+
+.about-box h4 {
+  margin: 10px 0 6px;
+  color: #fff;
+}
+
+.about-box p {
+  font-size: 14px;
+  color: #aaa;
+}
+
 
 </style>
 
-<div class="profile-wrapper">
-    <img src="{% static 'images/profile.jpg' %}" alt="Profile">
-</div>
 <section id="hero">  
+    <div class="profile-wrapper">
+         <img src="{% static 'images/profile.jpg' %}" alt="Profile">
+    </div>
     <div class="hero-content">
+        <h1><span style="font-size: 2.5rem; margin= -10px">HELLO 👋</span></h1>
         <h1 class="hero-title reveal">
-            HELLO, I'M <span class="glowing-3d-wobble" data-text="{{ profile.name|upper }}">{{ profile.name|default:"Aditya Singh"|upper }}</span><br>
+            I'M <span class="glowing-3d-wobble" data-text="{{ profile.name|upper }}">{{ profile.name|default:"Aditya Singh"|upper }}</span><br>
             <span style="font-size: 0.6em; color: var(--text-muted);">I AM A </span>
-            <span class="neon-text-pink" id="typing-text" data-words='["FULL STACK PYTHON AI DEVELOPER", "UI/UX DESIGNER", "PYTHON EXPERT", "TECH ENTHUSIAST"]'></span>
+            <span class="neon-text-pink" id="typing-text" data-words='["FULL STACK PYTHON","AI DEVELOPER", "UI/UX DESIGNER"]'></span>
             <span class="typing-cursor"></span>
         </h1>
         <p class="reveal" style="margin-top: 20px; font-size: 1.2rem; color: var(--text-muted);">
-            Building immersive digital experiences at the intersection of design and code.
-
-From ideas to interfaces — I design and develop meaningful digital products.
-
-View Artifacts
-A curated collection of my work — projects, prototypes, and experiments.
-
-Init Contact
-Looking for internships, open-source collaboration, or exciting projects. Let’s connect.
-
+            A passionate Full Stack Python AI Developer 🚀
+            <br>having experience in building web applications with Django/Javascript/React.js
+            <br> and AI solutions with Machine Learning.
         </p>
         <div class="hero-actions reveal" style="transition-delay: 0.2s;">
-            <a href="#projects" class="btn btn-primary">View Artifacts</a>
-            <a href="#contact" class="btn btn-secondary" style="margin-left: 20px;">Init Contact</a>
+            <a href="#projects" class="btn btn-primary">See My Resume</a>
+            <a href="#contact" class="btn btn-secondary" style="margin-left: 20px;">Contact Me</a>
         </div>
     </div>
 </section>
 
+ 
 <!-- About Section -->
-<section id="about">
+ <section id="about">
+  <div class="about-card">
+    <h2>About Me</h2>
+    <p style="color: var(--text-muted)">
+            I am a Computer Science Engineering student with a strong interest in
+        <span>Web Development</span> and <span>Problem Solving</span>.
+        I enjoy building scalable web applications using modern technologies
+        and continuously improving my skills through real-world projects.
+        </p>
+        <p class="about-text">
+        Currently, I focus on <span>Django</span>, <span>MERN Stack</span>,
+        and open-source contributions while preparing for product-based roles.
+    </p>
+    {% comment %} <p class="about-text">
+      I'm a Creative Director and UI/UX Designer from Sydney, Australia,
+      working in web development and print media. I enjoy turning complex
+      problems into simple, beautiful and intuitive designs.
+    </p> {% endcomment %}
+
+    <h3>What I'm Doing</h3>
+
+    <div class="about-grid">
+      <div class="about-box">
+        <span>🎨</span>
+        <h4>Web Design</h4>
+        <p>Modern and high-quality design made at a professional level.</p>
+      </div>
+
+      <div class="about-box">
+        <span>💻</span>
+        <h4>Web Development</h4>
+        <p>High-quality development of sites at the professional level.</p>
+      </div>
+
+      <div class="about-box">
+        <span>📱</span>
+        <h4>Mobile Apps</h4>
+        <p>Professional development of applications for iOS and Android.</p>
+      </div>
+
+      <div class="about-box">
+        <span>📸</span>
+        <h4>Photography</h4>
+        <p>I make high-quality photos of any category at a professional level.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% comment %} <section id="about">
     <div class="section-header reveal">
-        <h2 class="section-title">SYSTEM STATUS</h2>
-        <p style="color: var(--text-muted)">// Core competencies loaded</p>
+        <h2 class="section-title">ABOUT ME</h2>
+        <p style="color: var(--text-muted)">
+            I am a Computer Science Engineering student with a strong interest in
+        <span>Web Development</span> and <span>Problem Solving</span>.
+        I enjoy building scalable web applications using modern technologies
+        and continuously improving my skills through real-world projects.
+        </p>
+        <p class="about-text">
+        Currently, I focus on <span>Django</span>, <span>MERN Stack</span>,
+        and open-source contributions while preparing for product-based roles.
+    </p>
     </div>
     
     <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
@@ -116,10 +292,10 @@ Looking for internships, open-source collaboration, or exciting projects. Let’
             </div>
         </div>
     </div>
-</section>
+</section>   {% endcomment %}
 
 <!-- Projects Section -->
-<section id="projects">
+{% comment %} <section id="projects">
     <div class="section-header reveal">
         <h2 class="section-title">DEPLOYED UNITS</h2>
         <p style="color: var(--text-muted)">// Visual verification of recent builds</p>
@@ -160,7 +336,7 @@ Looking for internships, open-source collaboration, or exciting projects. Let’
         <p>No projects found.</p>
         {% endfor %}
     </div>
-</section>
+</section> {% endcomment %}
 
 <!-- Contact Section -->
 <section id="contact">
