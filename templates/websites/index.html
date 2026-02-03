@@ -2,8 +2,45 @@
 {% load static %}
 
 {% block content %}
+
+
+
 <!-- Hero Section -->
  <style>
+.toast-message {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(145deg, #0b1220, #050914);
+  color: #e5e7eb;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow:
+    0 0 0 1px rgba(59,130,246,0.6),
+    0 0 25px rgba(37,99,235,0.35);
+  z-index: 9999;
+  animation: slideUpFade 4s forwards;
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+{% comment %} /* Profile Image Wrapper  {% endcomment %}
  .profile-wrapper {
     width: 320px;
     height: 320px;
