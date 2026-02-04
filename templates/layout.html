@@ -12,6 +12,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <script>src="https://cdn.tailwindcss.com"</script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     
@@ -40,10 +42,24 @@
 
     <footer>
         <div class="social-icons" style="display: flex; justify-content: center; gap: 20px; padding: 40px 0;">
-            <a href="#" class="btn-secondary" style="border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">GH</a>
-            <a href="#" class="btn-secondary" style="border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">LI</a>
+            {% comment %} <a href="#" class="btn-secondary" style="border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;"><i class="fa-brands fa-linkedin-in" style="font-size:40px;color:red;"></i></a>
+            <a href="#" class="btn-secondary" style="border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">  <i class="fa-brands fa-instagram" style="font-size:40px;color:blue;"></i></a> {% endcomment %}
+              <a href="https://www.instagram.com/aditya4407singh/"
+                     target="_blank"
+                     class="btn-secondary"
+                    style="border-radius:50%; width:50px; height:50px; display:flex; align-items:center; justify-content:center;">
+                   <i class="fa-brands fa-instagram" style="font-size:22px;"></i>
+              </a>
+
+             <a href="https://www.linkedin.com/in/aditya-singh-84b82a324/"
+                   target="_blank"
+                  class="btn-secondary"
+                  style="border-radius:50%; width:50px; height:50px; display:flex; align-items:center; justify-content:center;">
+                  <i class="fa-brands fa-linkedin-in" style="font-size:22px;"></i>
+            </a>
+
         </div>
-        <p style="text-align: center; color: var(--text-muted); padding-bottom: 20px;">SYSTEM OFFLINE. &copy; {% now "Y" %}</p>
+        <p style="text-align: center; color: var(--text-muted); padding-bottom: 20px;">ADITYA SINGH. &copy; {% now "Y" %}</p>
     </footer>
 
     <script>

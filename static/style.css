@@ -229,23 +229,6 @@ nav.scrolled {
 }
 .nav-links a:hover::after { width: 100%; }
 
-/* --- HERO --- */
-/* #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 5% 0;
-    position: relative;
-}
-
-.hero-title {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    line-height: 1.1;
-} */
-
 .typing-cursor {
     display: inline-block;
     width: 4px;
