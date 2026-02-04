@@ -206,5 +206,13 @@
         resize(); init(); animate();
 
     </script>
+    {% if messages %}
+       {% for message in messages %}
+          <div class="toast-message">
+             {{ message }}
+         </div>
+     {% endfor %}
+   {% endif %}
+
 </body>
 </html>
