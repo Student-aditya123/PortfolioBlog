@@ -14,6 +14,8 @@
     <script>src="https://cdn.tailwindcss.com"</script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
 </head>
 <body>
     
@@ -229,6 +231,46 @@
          </div>
      {% endfor %}
    {% endif %}
+    <!-- Chatbot Widget -->
+<!-- Chatbot Panel -->
+<div id="chatbot-panel">
+  <div id="chatbot-header">
+    🤖 Chat with Aditya's Assistant
+    <span id="chatbot-close">✖</span>
+  </div>
+
+  <div id="chatbot-body">
+    <div class="bot-msg">
+      Hi 👋 I’m Aditya’s assistant.  
+      Ask me about resume, projects, or contact 🙂
+    </div>
+  </div>
+
+  <div id="chatbot-footer"> 
+    <input
+      type="text"
+      id="chatbot-input"
+      placeholder="Type your message..."
+    />
+    <button id="chatbot-send">Send</button>
+  </div>
+</div>
+
+<button id="chatbot-open">💬 Chat </button> 
+
+<script>
+const openBtn = document.getElementById("chatbot-open");
+const closeBtn = document.getElementById("chatbot-close");
+const panel = document.getElementById("chatbot-panel");
+
+openBtn.onclick = () => {
+  panel.style.display = "flex";
+};
+
+closeBtn.onclick = () => {
+  panel.style.display = "none";
+};
+</script>
 
 </body>
 </html>
