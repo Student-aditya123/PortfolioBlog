@@ -22,6 +22,7 @@ from core.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", home, name="home"),
+    path("api/", include("chatbot.urls")),
     path("__reload__/", include("django_browser_reload.urls")),
 
 ]
